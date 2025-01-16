@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Background Toggle</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        h1 {
+            cursor: pointer;
+            font-size: 3rem;
+            padding: 20px 40px;
+            border-radius: 10px;
+            border: 2px solid white;
+            transition: transform 0.2s ease, color 0.5s ease, background-color 0.5s ease;
+        }
+
+        h1:hover {
+            color: gray;
+            transform: scale(1.1);
+        }
+
+        body:has(h1:active) {
+            background-color: white;
+            color: black;
+        }
+
+        body:has(h1:active) h1 {
+            background-color: black;
+            color: white;
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body id="body">
+    <center>
+        <h1 id="h1">Toggle Background</h1>
+    </center>
+
+    <script>
+        const body = document.getElementById("body");
+        const h1 = document.getElementById("h1");
+
+        h1.addEventListener("click", () => {
+            // Check current background color and toggle
+            if (body.style.backgroundColor === "black") {
+                body.style.backgroundColor = "white";
+                h1.style.color = "black";
+            } else {
+                body.style.backgroundColor = "black";
+                h1.style.color = "white";
+            }
+        });
+    </script>
+</body>
+</html>
